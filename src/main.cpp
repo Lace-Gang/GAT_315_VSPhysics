@@ -8,6 +8,7 @@ by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit h
 */
 
 #include "TrigonometryScene.h"
+#include "PolarScene.h"
 
 
 
@@ -34,7 +35,8 @@ int main ()
 	
 	
 	//Key word new constrcts on the heap
-	Scene* scene = new TrigonometryScene("trigonometry", 1280, 720);
+	//Scene* scene = new TrigonometryScene("trigonometry", 1280, 720);
+	Scene* scene = new PolarScene("polar", 1280, 720);
 	scene->Initialize();
 
 	// game loop

@@ -10,6 +10,10 @@ void PolarScene::Update()
 {
 }
 
+void PolarScene::FixedUpdate()
+{
+}
+
 void PolarScene::Draw()
 {
 	m_camera->BeginMode();

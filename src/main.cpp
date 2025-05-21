@@ -9,6 +9,9 @@ by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit h
 
 #include "TrigonometryScene.h"
 #include "PolarScene.h"
+#include "VectorScene.h"
+#include"Fireworks.h"
+#include "SpringScene.h"
 
 
 
@@ -36,15 +39,31 @@ int main ()
 	
 	//Key word new constrcts on the heap
 	//Scene* scene = new TrigonometryScene("trigonometry", 1280, 720);
-	Scene* scene = new PolarScene("polar", 1280, 720);
+	//Scene* scene = new PolarScene("polar", 1280, 720);
+	//Scene* scene = new FireworksScene("Fireworks", 1280, 720);
+	//Scene* scene = new VectorScene("vector", 1280, 720);
+	Scene* scene = new SpringScene("vector", 1280, 720);
 	scene->Initialize();
+
+	//SetTargetFPS(10); <--definitley not this
+
+	float timeAccume = 0;
 
 	// game loop
 	while (!WindowShouldClose())		// run the loop untill the user presses ESCAPE or presses the Close button on the window
 	{
 		scene->Update();
+		//timeAccume += GetFrameTime();
+		timeAccume += std::min(GetFrameTime(), 0.5f);
+		//Acheive accurate calculations via a FixedUpdate
+		while (timeAccume >= Scene::fixedTimestep)
+		{
+			scene->FixedUpdate();
+			timeAccume -= Scene::fixedTimestep;
+		}
 		scene->BeginDraw();
 		scene->Draw();
+		scene->DrawGUI();
 		scene -> EndDraw();
 	}
 

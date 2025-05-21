@@ -1,6 +1,8 @@
 #pragma once
 #include "raylib.h"
 #include "scene_camera.h"
+//#include "World.h"
+//#include "Body.h"
 #include <string>
 
 class Scene
@@ -11,6 +13,7 @@ public:
 
 	virtual void Initialize() = 0; //remember this means that this function is pure vitrual and this class is abstract
 	virtual void Update() = 0;
+	virtual void FixedUpdate() = 0;
 
 	virtual void BeginDraw();
 	virtual void EndDraw();
@@ -22,12 +25,18 @@ public:
 	void SetCamera(SceneCamera* camera) { m_camera = camera; }
 	SceneCamera* GetCamera() { return m_camera; }
 
+	static constexpr float fixedTimestep = 1.0f / 60.0f; //60 fps
+	//constexpr = const expression = evaluated at compile time
+
+	friend struct Body;
+
 protected:
-	void DrawGrid(float slices, float thickness, const Color& color);
+	void DrawGrid(float slices, float thickness, const Color& color) const;
 	//void DrawGrid(float slices, float thickness, const Color& color);
-	void DrawText(const std::string& text, const Vector2& world, int fontSize, Color color);
-	void DrawCircle(const Vector2& world, float radius, Color color);
-	void DrawLine(const Vector2& v1, const Vector2& v2, float thickness, Color color);
+	void DrawText(const std::string& text, const Vector2& world, int fontSize, const Color& color) const;
+	void DrawCircle(const Vector2& world, float radius, const Color& color) const;
+	void DrawCircleLine(const Vector2& world, float radius, const Color& color, int pixels = 0) const;
+	void DrawLine(const Vector2& v1, const Vector2& v2, float thickness, const Color& color) const;
 
 protected:
 	int m_width{ 0 };
@@ -35,4 +44,6 @@ protected:
 	Color m_background{ WHITE };
 
 	SceneCamera* m_camera{ nullptr };
+
+	class World* m_world{ nullptr };
 };

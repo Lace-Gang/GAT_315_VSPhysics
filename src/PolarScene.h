@@ -15,6 +15,7 @@ public:
 	// Inherited via Scene
 	void Initialize() override;
 	void Update() override;
+	void FixedUpdate() override;
 	void Draw() override;
 	void DrawGUI() override;
 

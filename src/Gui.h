@@ -19,7 +19,7 @@ public:
 
 	inline static bool PhysicsWindowBoxActive = true;
 	 
-	inline static float GravitySliderValue = 1.0f;
+	inline static float GravitySliderValue = -9.81f;
 	inline static float GravityScaleSliderValue = 1.0f;
 	inline static float BodyMassSliderValue = 1.0f;
 	inline static float BodySizeSliderValue = 0.2f;

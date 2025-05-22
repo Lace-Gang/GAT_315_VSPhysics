@@ -1,12 +1,15 @@
 #pragma once
 #include"Body.h"
-#include<vector>
 #include "raylib.h"
+#include "Spring.h"
+
+#include<vector>
 
 struct Body;
 class Scene;
 
 using bodies_t = std::vector<Body*>;
+using springs_t = std::vector<Spring*>;
 
 class World
 {
@@ -19,12 +22,16 @@ public:
 	Body* CreateBody(Body::Type type, const Vector2& position, float mass, float size, const Color& color);
 	//Body* CreateBody2(Body::Type type, const Vector2& position, float size, const Color& color);
 	//Body* World::CreateBody(const Vector2& position, float mass, float size, const Color& color);
+	
+	Spring* CreateSpring(struct Body* bodyA, struct Body* bodyB, float restLength, float stiffness);
+	
 	void Step(float dt); //step is very much like update //dt can also be called timestep
 	void Draw(const Scene& scene);
 
 	void DestroyAll();
 
 	std::vector<Body*>& GetBodies() { return m_bodies; }
+
 	
 	//bodies_t& GetBodies() { return m_bodies; }
 
@@ -42,6 +49,7 @@ public:
 
 private:
 	std::vector<Body*> m_bodies;
+	std::vector<Spring*> m_springs; //keeping it this way for consistency since it doesn't technically matter which I use.
 
 	//bodies_t m_bodies;
 };

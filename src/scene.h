@@ -36,6 +36,8 @@ protected:
 	void DrawText(const std::string& text, const Vector2& world, int fontSize, const Color& color) const;
 	void DrawCircle(const Vector2& world, float radius, const Color& color) const;
 	void DrawCircleLine(const Vector2& world, float radius, const Color& color, int pixels = 0) const;
+	
+public:
 	void DrawLine(const Vector2& v1, const Vector2& v2, float thickness, const Color& color) const;
 
 protected:

@@ -43,10 +43,25 @@ Body* World::CreateBody(Body::Type type, const Vector2& position, float mass, fl
 //}
 
 
+Spring* World::CreateSpring(Body* bodyA, Body* bodyB, float restLength, float stiffness)
+{
+    Spring* spring = new Spring(bodyA, bodyB, restLength, stiffness);
+    m_springs.push_back(spring);
+
+    return spring;
+}
+
 void World::Step(float dt)
 {
     if (!simulate) return;
 
+    for (auto spring : m_springs)
+    {
+        //consider making the damping an interactable variable as well. But for now it's staying hardcoded.
+        spring->ApplyForce(0.8f, springStiffnessMultiplier);
+    }
+
+    //is this supposed to be here? or somewhere else?
     if(gravitation != 0) ApplyGravitation(m_bodies, 0.15f); //we did "> 0" in class, but I like things pushing away :)
 
 
@@ -64,6 +79,11 @@ void World::Step(float dt)
 
 void World::Draw(const Scene& scene)
 {
+    for (auto spring : m_springs)
+    {
+        spring->Draw(scene);
+    }
+
     for (auto body : m_bodies)
     {
         body->Draw(scene);
@@ -72,6 +92,10 @@ void World::Draw(const Scene& scene)
 
 void World::DestroyAll()
 {
+    for (auto spring : m_springs)
+    {
+        delete spring;
+    }
     for (auto body : m_bodies)
     {
         delete body;

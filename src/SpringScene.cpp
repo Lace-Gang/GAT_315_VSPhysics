@@ -51,8 +51,8 @@ void SpringScene::Update()
 			
 			body->type = type;
 			//Add these in when you can/if we decide we want them as changable
-			//body->restitution = GUI::restitutionSliderBarValue;
-			//body->gravityScale = GUI::gravityScaleSliderBarValue;
+			body->restitution = GUI::BodyRestitutionSliderValue * -1;
+			//body->gravityScale = GUI::GravityScaleSliderValue;
 			
 
 		}
@@ -74,7 +74,8 @@ void SpringScene::Update()
 				if (m_selectedBody && m_connectBody)
 				{
 					float distance = Vector2Distance(m_selectedBody->position, m_connectBody->position);
-					m_world->CreateSpring(m_selectedBody, m_connectBody, distance, 20);	
+					//m_world->CreateSpring(m_selectedBody, m_connectBody, distance, 15.0f);	
+					m_world->CreateSpring(m_selectedBody, m_connectBody, distance, GUI::SpringStiffnessSliderValue, GUI::SpringDampingSliderValue);	
 				}
 				m_selectedBody = nullptr;
 				m_connectBody = nullptr;

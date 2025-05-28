@@ -24,6 +24,8 @@ public:
 	//Body* World::CreateBody(const Vector2& position, float mass, float size, const Color& color);
 	
 	Spring* CreateSpring(struct Body* bodyA, struct Body* bodyB, float restLength, float stiffness);
+	Spring* CreateSpring(Body* bodyA, Body* bodyB, float restLength, float stiffness, float damping);
+
 	
 	void Step(float dt); //step is very much like update //dt can also be called timestep
 	void Draw(const Scene& scene);
@@ -39,7 +41,7 @@ public:
 	// fixed? --> //this is supposed to be static so that it can be called from elsewhere, but it is not allowing this to be static
 	inline static Vector2 m_gravity{ 0, -9.81f }; 
 	inline static float gravitation = 0;
-	inline static float springStiffnessMultiplier = 1.0f;
+	inline static float springStiffnessMultiplier = 50.0f; //1.0f
 	inline static bool simulate = true;
 public:
 	//static Vector2 m_gravity; //this is supposed to be static so that it can be called from elsewhere, but it is not allowing this to be static

@@ -51,6 +51,14 @@ Spring* World::CreateSpring(Body* bodyA, Body* bodyB, float restLength, float st
     return spring;
 }
 
+Spring* World::CreateSpring(Body* bodyA, Body* bodyB, float restLength, float stiffness, float damping)
+{
+    Spring* spring = new Spring(bodyA, bodyB, restLength, stiffness, damping);
+    m_springs.push_back(spring);
+
+    return spring;
+}
+
 void World::Step(float dt)
 {
     if (!simulate) return;

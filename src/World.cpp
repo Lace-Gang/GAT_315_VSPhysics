@@ -2,6 +2,7 @@
 #include "Body.h"
 #include "Gravitation.h"
 #include "Gui.h"
+#include "Collision.h"
 
 
 //Vector2 World::m_gravity{ 0, -9.81 };
@@ -83,6 +84,11 @@ void World::Step(float dt)
         //remove forces to start over on next frame
         body->ClearForce();
     }
+
+    m_contacts.clear();
+    Collision::CreateContacts(m_bodies, m_contacts);
+    Collision::SeparateContacts(m_contacts);
+
 }
 
 void World::Draw(const Scene& scene)

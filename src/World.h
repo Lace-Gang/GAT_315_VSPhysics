@@ -2,6 +2,7 @@
 #include"Body.h"
 #include "raylib.h"
 #include "Spring.h"
+#include "Contact.h"
 
 #include<vector>
 
@@ -10,6 +11,7 @@ class Scene;
 
 using bodies_t = std::vector<Body*>;
 using springs_t = std::vector<Spring*>;
+using contacts_t = std::vector<Contact>;
 
 class World
 {
@@ -52,6 +54,7 @@ public:
 private:
 	std::vector<Body*> m_bodies;
 	std::vector<Spring*> m_springs; //keeping it this way for consistency since it doesn't technically matter which I use.
+	std::vector<Contact> m_contacts;
 
 	//bodies_t m_bodies;
 };

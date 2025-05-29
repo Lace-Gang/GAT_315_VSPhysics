@@ -32,7 +32,8 @@ void SpringScene::Update()
 	//if (IsMouseButtonPressed(0) && !mouseOverGUI)
 	if (!GUI::mouseOverGUI)
 	{
-		if ( IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		//if ( IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		if ( IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsMouseButtonDown(MOUSE_BUTTON_LEFT) && IsKeyDown(KEY_LEFT_CONTROL))
 		{
 			Vector2 position = m_camera->ScreenToWorld(GetMousePosition());
 			Color color = ColorFromHSV(randomf(360), 0.6, 1);
@@ -53,6 +54,9 @@ void SpringScene::Update()
 			//Add these in when you can/if we decide we want them as changable
 			body->restitution = GUI::BodyRestitutionSliderValue * -1;
 			//body->gravityScale = GUI::GravityScaleSliderValue;
+			body->damping = GUI::BodyDampingSliderValue;
+
+			body->ApplyForce(randomOnUnitCircle() * 10, Body::ForceMode::Velocity);
 			
 
 		}

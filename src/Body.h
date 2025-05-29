@@ -13,6 +13,13 @@ public:
 		KINEMATIC
 	};
 
+	enum class ForceMode
+	{
+		Force,
+		Impulse,
+		Velocity
+	};
+
 public:
 	Body() = default;
 	Body(const Vector2& position, const Vector2& velocity, float size, const Color& color) :
@@ -63,7 +70,7 @@ public:
 	void Step(float dt, const Vector2& grativy, float grSc);
 	void Draw(const Scene&  scene);
 
-	void ApplyForce(const Vector2& force);
+	void ApplyForce(const Vector2& force, ForceMode forceMode = ForceMode::Force);
 
 	void ClearForce() { force = Vector2{ 0, 0 }; }
 

@@ -68,6 +68,16 @@ void SpringScene::Update()
 		}
 		if (m_selectedBody)
 		{
+			if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT) && IsKeyDown(KEY_LEFT_CONTROL))
+			{
+				if (m_selectedBody->type == Body::Type::DYNAMIC)
+				{
+					Vector2 position = m_camera->ScreenToWorld(GetMousePosition());
+					Spring::ApplyForce(position, *m_selectedBody, 0.2f, 0.15f);
+
+				}
+			}
+
 			if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
 			{
 				Vector2 position = m_camera->ScreenToWorld(GetMousePosition());

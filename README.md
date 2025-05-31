@@ -1,3 +1,52 @@
+# This is a C++ Physics Simulation Program for a class project.
+
+Included inside are five different scenes:
+* Fireworks
+* Polar
+* Spring
+* Trigonometry
+* Vector
+
+# Trigonometry Scene
+This scene displays a unit circle, a sign wave, and a cosine wave that move with time. This scene is non-interactable
+
+<img width="625" alt="image" src="https://github.com/user-attachments/assets/7612b099-5d5b-47aa-a1a4-86dc23825224" />
+
+# Polar Scene
+This scene demonstrates the use of Polar coordinates by displaying different types of spirals. This scene is non-interactable
+
+<img width="626" alt="image" src="https://github.com/user-attachments/assets/61ef28d8-3e01-487d-8950-a6c0e103df34" />
+
+
+# Fireworks Scene
+This is an interactable scene where three different types of fireworks can be created by clicking the screen
+Fireworks have random Colors and sizes, and are being used to demonstrate different physics concepts such as 
+gravity and velocity
+
+<img width="617" alt="Fireworks_7" src="https://github.com/user-attachments/assets/0d8574d2-4dfb-49bd-b99d-23a9b47dfcc7" />
+<img width="615" alt="Fireworks_5" src="https://github.com/user-attachments/assets/eba079c7-8cc1-4f0d-9018-7854a677a782" />
+
+# Vector Scene
+This is an interactable scene where a certain number of bodies (circles) can be created by clicking the screen
+These bodies demonstrate gravity and velocity as well as size, mass, restitution and collision
+
+<img width="450" alt="image" src="https://github.com/user-attachments/assets/ddb95e1c-a90b-4858-8af2-4ed8a55bbd05" />
+
+# Spring Scene
+This is a very interactable scene and can be considered the "Finished Product" in which users may adjust values in the GUI to see
+different effects. By clicking outside the GUI, one body (circle) will be spawned in with the current GUI specifications a random velocity.
+By holding left control and left click, a number of bodies will be created. Both the space bar and the simulate button can be use to pause 
+the simulation. Right clicking a body and draging to another body allows users to connect a spring between the two bodies using the current 
+spring settings specified in the GUI.
+
+All settings, selections and buttons in the GUI have been implemented and a fully functional.
+
+
+
+
+
+
+#Raylib Readme as required by license: 
 # Raylib-Quickstart
 A simple cross platform template for setting up a project with the bleeding edge raylib code.
 Works with C or C++.

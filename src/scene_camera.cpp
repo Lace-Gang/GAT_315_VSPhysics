@@ -1,5 +1,6 @@
 #include "scene_camera.h"
 #include "rlgl.h"
+#include "Aabb.h"
 
 void SceneCamera::BeginMode()
 {
@@ -21,6 +22,12 @@ void SceneCamera::BeginMode()
 void SceneCamera::EndMode()
 {
 	rlPopMatrix();
+}
+
+AABB SceneCamera::GetAABB()
+{
+	return AABB{ m_camera.target, { GetAspectRatio() * m_size * 2, m_size * 2 } };
+	//return AABB{ m_camera.target, { GetAspectRatio() * m_size, m_size } };
 }
 
 Vector2 SceneCamera::ScreenToWorld(const Vector2& screen)

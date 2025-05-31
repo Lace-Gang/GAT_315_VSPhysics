@@ -63,33 +63,33 @@ Spring* World::CreateSpring(Body* bodyA, Body* bodyB, float restLength, float st
 void World::Step(float dt)
 {
     if (!simulate) return;
+    
+    //is this supposed to be here? or somewhere else?
+    if(gravitation != 0) ApplyGravitation(m_bodies, 0.15f); //we did "> 0" in class, but I like things pushing away :)
 
     for (auto spring : m_springs)
     {
         //consider making the damping an interactable variable as well. But for now it's staying hardcoded.
-        spring->ApplyForce(0.8f, springStiffnessMultiplier);
+        //spring->ApplyForce(0.8f, springStiffnessMultiplier);
     }
-
-    //is this supposed to be here? or somewhere else?
-    if(gravitation != 0) ApplyGravitation(m_bodies, 0.15f); //we did "> 0" in class, but I like things pushing away :)
-
 
     for (auto body : m_bodies)
     {
         //body->velocity.y += (m_gravity.y * 0.003);
         //body->Step(dt, m_gravity, m_gravityScale);
         body->Step(dt, {0, GUI::GravitySliderValue}, GUI::GravityScaleSliderValue);
-
+        //body->Step(dt);
 
         //remove forces to start over on next frame
         body->ClearForce();
     }
 
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < 5; i++)
     {
-        m_contacts.clear();
         Collision::CreateContacts(m_bodies, m_contacts);
         Collision::SeparateContacts(m_contacts);
+        Collision::ResolveContacts(m_contacts);
+        m_contacts.clear();
     }
 }
 

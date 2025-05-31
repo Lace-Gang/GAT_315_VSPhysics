@@ -9,4 +9,5 @@ public:
 	static void SeparateContacts(contacts_t& contacts);
 
 	static bool Intersects(Body* bodyA, Body* bodyB);
+	static void ResolveContacts(contacts_t& contacts);
 };

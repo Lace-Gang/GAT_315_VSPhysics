@@ -1,6 +1,7 @@
 #pragma once
 #include "scene.h"
 #include "raylib.h"
+#include "Aabb.h"
 
 struct Body
 //class Body
@@ -67,7 +68,10 @@ public:
 		invMass = (type == Type::DYNAMIC && mass != 0) ? 1 / mass : 0;
 	}
 
+	AABB GetAABB() const { return AABB{ position, { size * 2, size * 2 } }; }
+
 	void Step(float dt, const Vector2& grativy, float grSc);
+	void Step(float dt);
 	void Draw(const Scene&  scene);
 
 	void ApplyForce(const Vector2& force, ForceMode forceMode = ForceMode::Force);

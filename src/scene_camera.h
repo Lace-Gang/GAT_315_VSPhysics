@@ -1,5 +1,8 @@
 #pragma once
 #include "raylib.h"
+//#include "Aabb.h"
+
+class Aabb;
 
 class SceneCamera
 {
@@ -23,6 +26,9 @@ public:
 
 	void SetPPU(float ppu) { m_ppu = ppu; }
 	float GetPPU() const { return m_ppu; }
+
+	float GetAspectRatio() const { return (m_camera.offset.x / m_camera.offset.y); }
+	class AABB GetAABB(); 
 
 	float ScreenToWorld(float screen) const { return screen / m_ppu; } //Convert from scene units to world units
 	float WorldToScreen(float world) const { return world * m_ppu; }

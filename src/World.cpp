@@ -70,7 +70,7 @@ void World::Step(float dt)
     for (auto spring : m_springs)
     {
         //consider making the damping an interactable variable as well. But for now it's staying hardcoded.
-        //spring->ApplyForce(0.8f, springStiffnessMultiplier);
+        spring->ApplyForce(0.8f, springStiffnessMultiplier);
     }
 
     for (auto body : m_bodies)

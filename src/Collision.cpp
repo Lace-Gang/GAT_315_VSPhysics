@@ -33,7 +33,8 @@ void Collision::CreateContacts(const bodies_t& bodies, contacts_t& contacts)
 				}
 
 				//float distance = <get distance from squared distance>;
-				float distance = distanceSqr;
+				///float distance = distanceSqr;
+				float distance = sqrtf(distanceSqr);
 				//float radius = <add size of bodyA and bodyB>;
 				float radius = bodyA->size + bodyB->size;
 				//contact.depth = <calculate penetration depth, see note above>;

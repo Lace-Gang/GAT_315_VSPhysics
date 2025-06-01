@@ -47,8 +47,12 @@ void GUI::Draw()
 		GuiSlider(Rectangle { anchor01.x + 96, anchor01.y + 320, 120, 16 }, "Gravity", GUI_DATA(GravitySliderValue), -20, 20);
 		GuiSlider(Rectangle{ anchor01.x + 96, anchor01.y + 340, 120, 16 }, "Stiffness X", GUI_DATA(World::springStiffnessMultiplier), 0, 100);
 
+		SimulationButtonPressed = GuiButton(Rectangle{ anchor01.x + 30, anchor01.y + 390, 100, 36 }, "Simulate");
+		ResetButtonPressed = GuiButton(Rectangle{ anchor01.x + 140, anchor01.y + 390, 100, 36 }, "Reset");
+
 		if (GuiDropdownBox(Rectangle { anchor01.x + 96, anchor01.y + 150, 120, 24 }, "DYNAMIC;STATIC;KINEMATIC", & BodyTypeDropdownBoxActive, BodyTypeDropdownBoxEditMode)) BodyTypeDropdownBoxEditMode = !BodyTypeDropdownBoxEditMode;
 
+		
 
 
 		//put on top of gravitation in finished box +  160

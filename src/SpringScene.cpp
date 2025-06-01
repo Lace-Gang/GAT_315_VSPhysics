@@ -28,16 +28,25 @@ void SpringScene::Update()
 	//float theta = randomf(0, 360);
 
 	if (IsKeyPressed(KEY_SPACE)) World::simulate = !World::simulate;
+	if (GUI::SimulationButtonPressed) World::simulate = !World::simulate;
 
+	if (GUI::ResetButtonPressed)
+	{
+		m_world = new World();
+		m_world->Initialize();
+	}
+	
+
+	//AABB collision to keep bodies within bounds
 	for (auto body : m_world->GetBodies())
 	{
 		AABB aabb = body->GetAABB();
 		AABB worldAABB = m_camera->GetAABB();
-
+	
 		if ((aabb.min().y) < worldAABB.min().y)
 		{
 			float overlap = (worldAABB.min().y - aabb.min().y); // calculate how far the body has penetrated beyond the world boundary
-			body->position.y += 2 * overlap; // move the body back inside the world bounds
+			body->position.y += (2 * overlap); // move the body back inside the world bounds
 			body->velocity.y *= -body->restitution; // multiply by -restituion to scale and flip velocity
 		}
 		else if ((aabb.max().y) > worldAABB.max().y)
@@ -58,7 +67,7 @@ void SpringScene::Update()
 		{
 			//<update x>
 			float overlap = (worldAABB.max().x - aabb.max().x);
-			body->position.x += 2 * overlap;
+			body->position.x += (2 * overlap);
 			body->velocity.x *= -body->restitution;
 		}
 	}
@@ -134,26 +143,26 @@ void SpringScene::Update()
 
 
 
-	//apply collision
-	for (auto body : m_world->GetBodies())
-	{
-		if (body->position.y < -5)
-		{
-			body->position.y = -5;
-			//body->velocity.y *= -1;
-			body->velocity.y *= body->restitution; //for restitution
-		}
-		if (body->position.x < -9)
-		{
-			body->position.x = -9;
-			body->velocity.x *= -1;
-		}
-		if (body->position.x > 9)
-		{
-			body->position.x = 9;
-			body->velocity.x *= -1;
-		}
-	}
+	////apply collision
+	//for (auto body : m_world->GetBodies())
+	//{
+	//	if (body->position.y < -5)
+	//	{
+	//		body->position.y = -5;
+	//		//body->velocity.y *= -1;
+	//		body->velocity.y *= body->restitution; //for restitution
+	//	}
+	//	if (body->position.x < -9)
+	//	{
+	//		body->position.x = -9;
+	//		body->velocity.x *= -1;
+	//	}
+	//	if (body->position.x > 9)
+	//	{
+	//		body->position.x = 9;
+	//		body->velocity.x *= -1;
+	//	}
+	//}
 }
 
 void SpringScene::FixedUpdate()

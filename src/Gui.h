@@ -13,6 +13,8 @@ public:
 
 public:
 	inline static bool mouseOverGUI = false;
+	inline static bool SimulationButtonPressed = false;
+	inline static bool ResetButtonPressed = false;
 	 
 	inline static Vector2 anchor01 = { 48, 56 };
 	//inline static Vector2 anchor02 = { 112, 104 };
@@ -20,7 +22,7 @@ public:
 	inline static bool PhysicsWindowBoxActive = true;
 	 
 	inline static float GravitySliderValue = -9.81f;
-	inline static float GravitationSliderValue = -9.81f;
+	inline static float GravitationSliderValue = 0.0f;
 	inline static float GravityScaleSliderValue = 1.0f;
 	inline static float BodyMassSliderValue = 1.0f;
 	inline static float BodySizeSliderValue = 0.2f;

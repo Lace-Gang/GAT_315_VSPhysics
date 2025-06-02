@@ -41,12 +41,13 @@ spring settings specified in the GUI.
 
 All settings, selections and buttons in the GUI have been implemented and a fully functional.
 
+<img width="626" alt="image" src="https://github.com/user-attachments/assets/1a0d7277-8378-4f93-b704-9aa30a04e1bb" />
 
 
 
 
 
-#Raylib Readme as required by license: 
+## Raylib Readme as required by license: 
 # Raylib-Quickstart
 A simple cross platform template for setting up a project with the bleeding edge raylib code.
 Works with C or C++.

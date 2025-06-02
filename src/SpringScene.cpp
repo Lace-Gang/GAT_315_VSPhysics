@@ -32,8 +32,10 @@ void SpringScene::Update()
 
 	if (GUI::ResetButtonPressed)
 	{
-		m_world = new World();
-		m_world->Initialize();
+		//m_world = new World();
+		//m_world->Initialize();
+
+		m_world->DestroyAll();
 	}
 	
 
@@ -95,7 +97,7 @@ void SpringScene::Update()
 			
 			body->type = type;
 			//Add these in when you can/if we decide we want them as changable
-			body->restitution = GUI::BodyRestitutionSliderValue * -1;
+			body->restitution = GUI::BodyRestitutionSliderValue;
 			//body->gravityScale = GUI::GravityScaleSliderValue;
 			body->damping = GUI::BodyDampingSliderValue;
 

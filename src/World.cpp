@@ -116,6 +116,8 @@ void World::DestroyAll()
     {
         delete body;
     }
+    m_springs.clear();
+    m_bodies.clear();
     //m_bodies.clear(); does not work because it does NOT deallocate/delet the items within. It only sets the size of the array to zero.
     //if we want the elements deleted, and memory freed, we have to do it ourselves.
 }
